@@ -77,18 +77,34 @@ int mode(int a[], int n)
        
  int factors(int n, int a[])  
  {
-    int no=0,i=-1;
+    int i=0;
   int x=sqrt(n);
-   for(int j=2;j<=x;j++)
+  while(n%2==0)
+      {
+        a[i++]=2;
+        
+        n=n/2;
+      }
+   for(int j=3;j<=x;j+=2)
    {
       while(n%j==0)
       {
         a[i++]=j;
-        no++;
+        
         n=n/j;
       }
+      if(j%2==0 && j>2)
+      {
+      j++;
+      }
    }
-   a[i]=n;
-   return no+1;
+   if(n!=1)
+     {
+     a[i]=n;
+     return i+1;
+     }
+     
+     else
+     return i;
  } 
 
